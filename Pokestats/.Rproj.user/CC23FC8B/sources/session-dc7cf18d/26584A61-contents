@@ -1,0 +1,44 @@
+library(Pokestats)
+
+
+# Define the server logic
+server <- function(input, output) {
+  # Call the custom function based on user input
+  compute_result <- reactive({
+    predic(attacker = input$Attacker, 
+           move = input$Move, 
+           defender = input$Defender,
+           
+           attacker_level = input$AttackerLevel,
+           defender_level = input$DefenderLevel
+    )
+  })
+  
+  
+  # Render the result as a DataTable
+  output$resultTable <- renderDataTable({
+    compute_result()}, 
+    options = list(
+      searching = FALSE,
+      paging = FALSE,
+      info = FALSE
+      
+    ))
+  
+  # add textbox
+  output$calculator_explanation_1 <- renderText({
+    "Attacking pokemon has 31 IVs and 252 EVs for its attack stat"
+  })
+  
+  # add textbox
+  output$calculator_explanation_2 <- renderText({
+    "Defending pokemon, from Low/Mid/High stats, has 31 IVs and 0/126/252 EVs respectively for its defense and HP stat"
+  })
+  
+  # add textbox
+  output$calculator_explanation_3 <- renderText({
+    "The range of damage is determined by all possible combinations of neutral and beneficial natures"
+  })
+  
+  
+}

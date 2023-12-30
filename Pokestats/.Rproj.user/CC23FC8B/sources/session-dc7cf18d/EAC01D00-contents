@@ -1,0 +1,29 @@
+library(Pokestats)
+
+args(outsp)
+
+outsp("Ninjask", "")
+outsp("Raikou", "")
+outsp("Togekiss", "")
+outsp("Salamence", "")
+outsp("Weezing", "")
+outsp("Gallade", "")
+
+###################################
+
+args(predic)
+
+predic("Ninjask", "", "")
+predic("Raikou", "", "")
+predic("Togekiss", "", "")
+predic("Salamence", "", "")
+predic("Weezing", "", "")
+predic("Gallade", "", "")
+
+################################################################################
+
+
+predic("Ninjask", "U-turn", "Bulbasaur") %>% class
+predic("Ninjask", "U-turn", "Bulbasaur") 
+
+

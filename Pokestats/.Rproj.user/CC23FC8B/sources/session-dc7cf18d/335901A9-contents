@@ -1,0 +1,42 @@
+library(Pokestats)
+
+
+# Define the UI for the Shiny app
+ui <- fluidPage(
+  titlePanel("PokeMMO Damage Calculator"),
+  sidebarLayout(
+    
+    
+    sidebarPanel(
+      
+      # Input for the third parameter
+      selectInput("Attacker", "Attacker:", choices = pokedex$Name),
+      
+      # Input for the first parameter
+      numericInput("AttackerLevel", "Attacker Level:", value = 50),
+      
+      # Input for the third parameter
+      selectInput("Defender", "Defender:", choices = pokedex$Name),
+      
+      # Input for the first parameter
+      numericInput("DefenderLevel", "Defender Level:", value = 50),
+      
+      # Input for the second parameter
+      selectInput("Move", "Move:", choices = pokemoves$Name)
+      
+      
+    ),
+    
+    
+    mainPanel(
+      # Output for the result
+      verbatimTextOutput("calculator_explanation_1"),
+      verbatimTextOutput("calculator_explanation_2"),
+      verbatimTextOutput("calculator_explanation_3"),
+      dataTableOutput("resultTable")
+      
+      
+    )
+  )
+  
+)
